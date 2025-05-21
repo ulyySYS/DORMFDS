@@ -5,6 +5,7 @@ const StudentPersonalInfo = ({ userData }) => {
   const [emergencyContact, setEmergencyContact] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [deleteStatus, setDeleteStatus] = useState(null);
   const [personalInfo, setpersonalInfo] = useState(null);
 
   useEffect(() => {
@@ -55,6 +56,39 @@ const StudentPersonalInfo = ({ userData }) => {
     }
   };
 
+  const handleDeleteEmergencyContact = async () => {
+    if (!userData?.UserID) {
+      setError('Cannot delete: User ID is missing');
+      return;
+    }
+
+    // Show confirmation dialog
+    const confirmDelete = window.confirm('Are you sure you want to delete this emergency contact?');
+    if (!confirmDelete) return;
+
+    setIsLoading(true);
+    setDeleteStatus(null);
+    setError(null);
+
+    try {
+      const response = await fetch(`http://localhost:3000/user/delete-emergency-contact/${userData.UserID}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete emergency contact');
+      }
+
+      // Success
+      setDeleteStatus('Emergency contact deleted successfully');
+      setEmergencyContact(null); // Remove contact from UI
+    } catch (err) {
+      setError('Error deleting emergency contact: ' + err.message);
+      console.error('Error deleting emergency contact:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
@@ -118,12 +152,23 @@ const StudentPersonalInfo = ({ userData }) => {
       <div className="personal-info-card">
         <div className="personal-info-header">
           <h3>Emergency Contact</h3>
+          {emergencyContact && (
+            <button 
+              className="delete-contact-btn"
+              onClick={handleDeleteEmergencyContact}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Deleting...' : 'Delete Contact'}
+            </button>
+          )}
         </div>
         <div className="personal-info-content">
-          {isLoading ? (
+          {isLoading && !emergencyContact ? (
             <div className="loading-text">Loading emergency contact...</div>
           ) : error ? (
             <div className="error-text">{error}</div>
+          ) : deleteStatus ? (
+            <div className="success-text">{deleteStatus}</div>
           ) : emergencyContact ? (
             <div className="personal-info-grid">
               <div className="personal-info-section">

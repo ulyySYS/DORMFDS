@@ -91,6 +91,35 @@
   font-style: italic;
 }
 
+.personal-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-contact-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-contact-btn:hover {
+  background-color: #c82333;
+}
+
+.delete-contact-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.success-text {
+  color: #28a745;
+  padding: 10px;
+}
+
 @media (max-width: 768px) {
   .personal-info-grid {
     grid-template-columns: 1fr;

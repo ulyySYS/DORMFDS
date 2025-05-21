@@ -384,6 +384,29 @@ router.get('/emergency-contact/:UserID', async (req, res) => {
     }
 });
 
+// /user/delete-emergency-contact/:UserID
+router.delete('/delete-emergency-contact/:UserID', async (req, res) => {
+    const { UserID } = req.params;
+
+    try {
+        const [result] = await database.query(
+            `DELETE FROM EmergencyContacts WHERE UserID = ?`,
+            [UserID]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'No emergency contacts found for this user.' });
+        }
+
+        res.status(200).json({ message: 'Emergency contact(s) deleted successfully.' });
+
+    } catch (err) {
+        console.error("Error deleting emergency contacts:", err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 // /admin/emergency-contact/:UserID
 router.post('/emergency-contact/:UserID', async (req, res) => {
     const { UserID } = req.params;
