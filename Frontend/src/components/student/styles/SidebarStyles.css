@@ -1,0 +1,184 @@
+/* Sidebar Styles */
+.student-sidebar {
+  width: 250px;
+  background: linear-gradient(to bottom, var(--dark-primary), var(--primary-dark));
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  position: relative;
+  z-index: 10;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.student-sidebar-collapsed {
+  width: 70px;
+}
+
+.student-sidebar-header {
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-sidebar-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.student-sidebar-logo {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.student-sidebar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.student-sidebar-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.student-sidebar-toggle-btn:hover {
+  opacity: 1;
+}
+
+.student-sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  flex: 1;
+}
+
+.student-sidebar-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: left;
+  margin: 0.25rem 0.75rem;
+  border-radius: 6px;
+}
+
+.student-sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.student-sidebar-btn-icon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.student-sidebar-collapsed .student-sidebar-btn {
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.student-sidebar-footer {
+  padding: 1rem 1.25rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.student-sidebar-welcome {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-sidebar-logout-btn {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--white);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.student-sidebar-logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .student-dashboard-layout {
+    flex-direction: column;
+  }
+  
+  .student-sidebar {
+    width: 100%;
+    height: auto;
+  }
+  
+  .student-sidebar-collapsed {
+    height: 60px;
+    width: 100%;
+  }
+  
+  .student-dashboard-content {
+    height: calc(100vh - 60px);
+    padding: 1rem;
+  }
+  
+  .student-dashboard-content-expanded {
+    margin-left: 0;
+    margin-top: -190px;
+  }
+  
+  .student-sidebar-collapsed .student-sidebar-buttons,
+  .student-sidebar-collapsed .student-sidebar-footer {
+    display: none;
+  }
+  
+  .info-grid-preview {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

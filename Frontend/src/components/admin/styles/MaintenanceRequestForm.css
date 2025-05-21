@@ -1,0 +1,184 @@
+/* MaintenanceRequestForm.css */
+:root {
+  --primary: #ff3b7a;
+  --secondary: #7a2fff;
+  --dark: #1e0a26;
+  --light: #ffedf3;
+  --accent: #ff0844;
+  --error: #ff2a54;
+  --success: #a855f7;
+}
+
+.maintenance-card {
+  background: var(--dark);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  color: var(--light);
+  max-width: 600px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-top: 4px solid var(--primary);
+}
+
+.card-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  position: relative;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.alert-error, 
+.alert-success {
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.alert-error {
+  background-color: rgba(255, 42, 84, 0.15);
+  border-left: 4px solid var(--error);
+  color: #ffb3c0;
+}
+
+.alert-success {
+  background-color: rgba(168, 85, 247, 0.15);
+  border-left: 4px solid var(--success);
+  color: #d8b4fe;
+}
+
+.input-container {
+  margin-bottom: 1.5rem;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.input-field {
+  position: relative;
+}
+
+.user{
+    width: 20%;
+}
+
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--light);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 2px rgba(122, 47, 255, 0.2);
+  outline: none;
+}
+
+.input-field input:read-only {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-style: dashed;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.textarea-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-container {
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 59, 122, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.submit-button.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 15px;
+  margin-top: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .maintenance-card {
+    margin: 1rem;
+    border-radius: 8px;
+  }
+  
+  .card-header {
+    padding: 1rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .submit-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,224 @@
+/* StudentPayments.css - Pink, Red, Black and Violet theme */
+
+/* Panel styles */
+.payment-panel {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  color: #f0f0f0;
+}
+
+.payment-panel-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ff1493;
+  padding-bottom: 1rem;
+}
+
+.payment-panel-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #ff1493;
+}
+
+.payment-panel-header p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Card grid and cards */
+.payment-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.payment-card {
+  background-color: #252525;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.payment-full-width {
+  grid-column: 1 / -1;
+}
+
+.payment-card-header {
+  background-color: #350035;
+  padding: 1rem;
+  border-bottom: 1px solid #4b0082;
+}
+
+.payment-card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ff69b4;
+}
+
+.payment-card-content {
+  padding: 1.5rem;
+}
+
+/* Form styles */
+.payment-form-group {
+  margin-bottom: 1.2rem;
+}
+
+.payment-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #ff69b4;
+}
+
+.payment-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.payment-input:focus {
+  outline: none;
+  border-color: #ff1493;
+  box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.2);
+}
+
+.payment-input::placeholder {
+  color: #888;
+}
+
+.payment-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Button styles */
+.payment-submit-btn {
+  background: linear-gradient(135deg, #ff1493, #8b008b);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.payment-submit-btn:hover {
+  background: linear-gradient(135deg, #ff69b4, #9400d3);
+  box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+}
+
+.payment-submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* Payment table styles */
+.payment-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow-x: auto;
+}
+
+.payment-table-header {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 0.8fr 1fr 1fr;
+  background-color: #350035;
+  border-radius: 4px 4px 0 0;
+  font-weight: 600;
+}
+
+.payment-header-cell {
+  padding: 0.75rem 1rem;
+  color: #ff69b4;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.payment-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 0.8fr 1fr 1fr;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s;
+}
+
+.payment-row:hover {
+  background-color: rgba(255, 105, 180, 0.1);
+}
+
+.payment-cell {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.payment-amount {
+  font-weight: 600;
+  color: #ff69b4;
+}
+
+/* Status indicators */
+.payment-status {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.payment-status-pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.payment-status-completed {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.payment-status-cancelled {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+/* Message styles */
+.payment-success {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.payment-error {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.payment-loading {
+  text-align: center;
+  padding: 2rem 0;
+  color: #ccc;
+}
+
+.payment-empty {
+  text-align: center;
+  padding: 2rem 0;
+  color: #888;
+}

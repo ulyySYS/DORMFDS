@@ -1,0 +1,236 @@
+/* MaintenanceRequest.css - Pink, Red, Black, and Violet Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.maintenance-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #f5f5f5;
+  background-color: #0f0f0f;
+  min-height: 100vh;
+}
+
+.maintenance-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/* Form Card Styling */
+.maintenance-form-card {
+  background-color: rgba(20, 10, 22, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(255, 0, 130, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maintenance-history-card {
+  background-color: rgba(20, 10, 22, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(161, 59, 202, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Form Styling */
+form {
+  padding: 1.5rem;
+}
+
+.input-field {
+  margin-bottom: 1.2rem;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #d8d8d8;
+  font-weight: 500;
+}
+
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  outline: none;
+  border-color: #ff3b8d;
+  box-shadow: 0 0 0 2px rgba(255, 59, 141, 0.2);
+}
+
+.input-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input-field input::placeholder,
+.input-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.success-alert {
+  background-color: rgba(0, 204, 153, 0.1);
+  color: #00cc99;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #00cc99;
+}
+
+.error-alert {
+  background-color: rgba(255, 59, 78, 0.1);
+  color: #ff3b4e;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #ff3b4e;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #a239ca 0%, #ff3b8d 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 59, 141, 0.3);
+}
+
+/* History Section Styling */
+.history-content {
+  padding: 1.5rem;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  color: #b8b8b8;
+  text-align: center;
+}
+
+.loader {
+  border: 4px solid rgba(255, 59, 141, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #ff3b8d;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.request-item {
+  background-color: rgba(30, 15, 35, 0.6);
+  border-radius: 8px;
+  padding: 1.2rem;
+  border-left: 3px solid #a239ca;
+  transition: transform 0.2s;
+}
+
+.request-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.request-room {
+  font-weight: 600;
+  color: #ff3b8d;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.request-description {
+  color: #d8d8d8;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.request-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background-color: rgba(255, 59, 141, 0.15);
+  color: #ff3b8d;
+}
+
+.status-not_fixed {
+  background-color: rgba(255, 59, 141, 0.15);
+  color: #ff3b8d;
+}
+
+.status-in_progress {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.status-fixed,
+.status-completed {
+  background-color: rgba(0, 204, 153, 0.15);
+  color: #00cc99;
+}
+
+.request-date {
+  color: #8a8a8a;
+  font-size: 0.8rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .maintenance-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .maintenance-container {
+    padding: 1rem;
+  }
+}

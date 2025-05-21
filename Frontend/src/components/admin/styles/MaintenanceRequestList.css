@@ -1,0 +1,246 @@
+/* MaintenanceRequestList.css */
+:root {
+  --primary-color: #ff3366;
+  --primary-light: #ff6b9b;
+  --primary-dark: #cc1a4a;
+  --secondary-color: #9c27b0;
+  --secondary-light: #c158dc;
+  --secondary-dark: #7b1fa2;
+  --dark-color: #1a1a1a;
+  --dark-light: #2d2d2d;
+  --light-color: #f5f5f5;
+  --light-dark: #e1e1e1;
+  --success-color: #4cd964;
+  --warning-color: #ff9500;
+  --error-color: #ff3b30;
+  --border-radius: 10px;
+  --card-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+.request-list-container {
+  background-color: var(--dark-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--light-color);
+  overflow: hidden;
+  width: 100%;
+}
+
+.request-list-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-list-header h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.request-list-counter {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.request-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.request-list-empty-icon {
+  color: var(--primary-light);
+  margin-bottom: 16px;
+}
+
+.request-list-empty p {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.request-list-empty span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.request-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.request-list-item {
+  background-color: var(--dark-light);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.request-list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: var(--primary-light);
+}
+
+.request-list-item.request-list-selected {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.3);
+}
+
+.request-list-item-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.request-list-room-badge {
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.request-list-status {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.request-list-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.request-list-status.request-list-fixed {
+  background-color: rgba(76, 217, 100, 0.15);
+  color: var(--success-color);
+}
+
+.request-list-status.request-list-fixed::before {
+  background-color: var(--success-color);
+}
+
+.request-list-status.request-list-pending {
+  background-color: rgba(255, 149, 0, 0.15);
+  color: var(--warning-color);
+}
+
+.request-list-status.request-list-pending::before {
+  background-color: var(--warning-color);
+}
+
+.request-list-item-body {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.request-list-issue-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-light);
+}
+
+.request-list-issue-description {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.request-list-item-footer {
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.request-list-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.request-list-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.request-list-meta-item svg {
+  color: var(--primary-light);
+}
+
+.request-list-view-btn {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  transition: var(--transition);
+}
+
+.request-list-view-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .request-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.userid{
+
+  width: 20%;
+}

@@ -1,0 +1,154 @@
+.room-change-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .room-change-container {
+    flex-direction: column;
+  }
+}
+
+.room-change-form-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.room-change-list-section {
+  flex: 2;
+  min-width: 500px;
+}
+
+.room-change-card {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  height: 100%;
+  border: 1px solid #3d1c38;
+}
+
+.room-change-card h2 {
+  color: #ff4d94;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #3d1c38;
+  padding-bottom: 0.75rem;
+}
+
+.room-change-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.room-change-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.room-change-form .form-group label {
+  color: #e0a0e0;
+  font-weight: 500;
+}
+
+.room-change-form .form-group input {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #3d1c38;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.room-change-form .form-group input:focus {
+  outline: none;
+  border-color: #ff4d94;
+  box-shadow: 0 0 0 2px rgba(255, 77, 148, 0.2);
+}
+
+.room-change-form .submit-btn {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #ff4d94, #9c2c7f);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.room-change-form .submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff3385, #8a2770);
+  transform: translateY(-2px);
+}
+
+.room-change-form .submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.room-change-container .error-message {
+  background-color: rgba(255, 76, 76, 0.1);
+  color: #ff4c4c;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ff4c4c;
+}
+
+.room-change-container .success-message {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #4caf50;
+}
+
+.registrations-table-container {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.registrations-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.registrations-table th {
+  background-color: #3d1c38;
+  color: #ff4d94;
+  text-align: left;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.registrations-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.registrations-table tr:hover {
+  background-color: #2a1a27;
+  cursor: pointer;
+}
+
+.loading-text, .no-registrations {
+  color: #999;
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}

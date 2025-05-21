@@ -1,0 +1,98 @@
+/* Student Personal Info Styling with Pink, Red, Black, and Violet Theme */
+*{
+
+}
+.personal-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.personal-info-card {
+  background-color: #1a121e;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-left: 4px solid #ff2e63;
+}
+
+.personal-info-header {
+  background: linear-gradient(135deg, #6c1f59, #3a0d4f);
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #ff2e63;
+}
+
+.personal-info-header h3 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.personal-info-content {
+  padding: 1.5rem;
+}
+
+.personal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.personal-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.info-item label {
+  color: #ff2e63;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item span {
+  color: black;
+  font-size: 1.05rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3a0d4f;
+}
+
+.loading-text {
+  color: #b097c4;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.error-text {
+  color: #ff2e63;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(255, 46, 99, 0.1);
+  border-radius: 5px;
+}
+
+.no-data-text {
+  color: #b097c4;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .personal-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

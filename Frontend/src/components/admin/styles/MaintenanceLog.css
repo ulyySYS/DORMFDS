@@ -1,0 +1,206 @@
+/* MaintenanceLogForm.css */
+:root {
+  --primary-color: #ff3366;
+  --secondary-color: #9c27b0;
+  --dark-color: #1a1a1a;
+  --light-color: #f5f5f5;
+  --accent-color: #ff6b9b;
+  --error-color: #ff4d4d;
+  --success-color: #4cd964;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+.maintenance-card {
+  background: var(--dark-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 550px;
+  width: 100%;
+  overflow: hidden;
+  border-top: 4px solid var(--primary-color);
+  color: var(--light-color);
+}
+
+.maintenance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.maintenance-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+}
+
+.maintenance-body {
+  padding: 24px;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.alert-error {
+  background-color: rgba(255, 77, 77, 0.15);
+  border-left: 4px solid var(--error-color);
+  color: var(--error-color);
+}
+
+.alert-success {
+  background-color: rgba(76, 217, 100, 0.15);
+  border-left: 4px solid var(--success-color);
+  color: var(--success-color);
+}
+
+.maintenance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.input-field {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
+  color: var(--light-color);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.2);
+}
+
+.input-field:read-only {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+}
+
+.textarea-field {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
+  color: var(--light-color);
+  font-size: 14px;
+  resize: vertical;
+  min-height: 120px;
+  transition: var(--transition);
+}
+
+.textarea-field:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.2);
+}
+
+.textarea-field:disabled {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: not-allowed;
+}
+
+.fixed-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background-color: rgba(156, 39, 176, 0.15);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.fixed-notice svg {
+  color: var(--secondary-color);
+  flex-shrink: 0;
+}
+
+.fixed-notice span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.submit-button {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+}
+
+.submit-button:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 51, 102, 0.3);
+}
+
+.submit-button:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.submit-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(to right, #888, #666);
+}
