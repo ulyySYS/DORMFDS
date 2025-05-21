@@ -384,6 +384,34 @@ router.get('/emergency-contact/:UserID', async (req, res) => {
     }
 });
 
+// /admin/emergency-contact/:UserID
+router.post('/emergency-contact/:UserID', async (req, res) => {
+    const { UserID } = req.params;
+    const { Name, Relationship, ContactNumber, Email } = req.body;
+
+    if (!Name || !ContactNumber) {
+        return res.status(400).json({ message: 'Name and ContactNumber are required.' });
+    }
+
+    try {
+        const [result] = await database.query(
+            `INSERT INTO EmergencyContacts (UserID, Name, Relationship, ContactNumber, Email)
+             VALUES (?, ?, ?, ?, ?)`,
+            [UserID, Name, Relationship || null, ContactNumber, Email || null]
+        );
+
+        res.status(201).json({
+            message: 'Emergency contact added successfully',
+            contactID: result.insertId
+        });
+
+    } catch (err) {
+        console.error("Error inserting emergency contact:", err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 
 // /admin/rooms/all
 router.get('/rooms/all', async (req, res) => {

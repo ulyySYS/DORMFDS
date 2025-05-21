@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const RegistrationForm = ({ currentUser }) => {
@@ -20,7 +19,12 @@ const RegistrationForm = ({ currentUser }) => {
     password: '',
     roomId: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    // Emergency contact fields
+    emergencyContactName: '',
+    emergencyContactRelationship: '',
+    emergencyContactNumber: '',
+    emergencyContactEmail: ''
   });
 
   // Fetch rooms when component mounts
@@ -115,7 +119,6 @@ const RegistrationForm = ({ currentUser }) => {
         return; 
       }
       
-
       if (!createUserResponse.ok) {
         throw new Error('Failed to create user: ' + (responseData.message || 'Unknown error'));
       }
@@ -128,6 +131,31 @@ const RegistrationForm = ({ currentUser }) => {
       
       loginData = responseData;
       console.log('User created successfully:', loginData);
+
+      // Second API call - Add emergency contact
+      const emergencyContactPayload = {
+        Name: formData.emergencyContactName,
+        Relationship: formData.emergencyContactRelationship,
+        ContactNumber: formData.emergencyContactNumber,
+        Email: formData.emergencyContactEmail
+      };
+      
+      console.log('Sending emergency contact payload:', emergencyContactPayload);
+      
+      const addEmergencyContactResponse = await fetch(`http://localhost:3000/admin/emergency-contact/${loginData.userInfo.UserID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emergencyContactPayload)
+      });
+      
+      const emergencyContactResponseData = await addEmergencyContactResponse.json();
+      console.log('Emergency contact response:', emergencyContactResponseData);
+      
+      if (!addEmergencyContactResponse.ok) {
+        throw new Error('Failed to add emergency contact: ' + (emergencyContactResponseData.message || 'Unknown error'));
+      }
 
       // Third API call - Add registration
       const registrationPayload = {
@@ -163,7 +191,11 @@ const RegistrationForm = ({ currentUser }) => {
         password: '',
         roomId: '',
         startDate: '',
-        endDate: ''
+        endDate: '',
+        emergencyContactName: '',
+        emergencyContactRelationship: '',
+        emergencyContactNumber: '',
+        emergencyContactEmail: ''
       });
       
       setSuccess('User registration completed successfully!');
@@ -231,143 +263,170 @@ const RegistrationForm = ({ currentUser }) => {
         
         {/* SQL Error display */}
         {sqlError && (
-          <div 
-            className="register-error-container" 
-            style={{
-              border: '2px solid #ff0000',
-              backgroundColor: '#ffdddd',
-              padding: '15px',
-              borderRadius: '4px',
-              marginBottom: '20px',
-              display: 'block',
-              color: '#ff0000',
-              fontSize: '14px',
-              boxShadow: '0 0 5px rgba(255,0,0,0.3)'
-            }}
-          >
-            <p 
-              className="register-error-title" 
-              style={{ 
-                fontWeight: 'bold', 
-                color: '#ff0000', 
-                margin: '0 0 5px 0',
-                fontSize: '16px'
-              }}
-            >
-              Database Error:
-            </p>
-            <p 
-              className="register-error-sql" 
-              style={{ 
-                margin: '0', 
-                color: '#ff0000',
-                wordBreak: 'break-word'
-              }}
-            >
+          <div className="register-error-container">
+            <p className="register-error-title">Database Error:</p>
+            <p className="register-error-sql">
               {sqlError || "Unknown database error occurred"}
             </p>
           </div>
         )}
         
         <form onSubmit={handleSubmit} className="registration-form">
-          <div className="registration-form-group">
-            <label className="registration-label">Username</label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              className="registration-input"
-              required
-            />
+          <div className="form-section">
+            <h5 className="form-section-title section-title">User Information</h5>
+            <div className="registration-form-group">
+              <label className="registration-label">Username</label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Role</label>
+              <select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="registration-select"
+                required
+              >
+                <option value="Student">Student</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Contact Number</label>
+              <input
+                type="text"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`registration-input ${sqlError ? 'register-error-field' : ''}`}
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
           </div>
           
-          <div className="registration-form-group">
-            <label className="registration-label">Role</label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="registration-select"
-              required
-            >
-              <option value="Student">Student</option>
-              <option value="Admin">Admin</option>
-            </select>
+          <div className="form-section">
+            <h5 className="form-section-title section-title">Emergency Contact</h5>
+            <div className="registration-form-group">
+              <label className="registration-label">Contact Name</label>
+              <input
+                type="text"
+                name="emergencyContactName"
+                value={formData.emergencyContactName}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Relationship</label>
+              <input
+                type="text"
+                name="emergencyContactRelationship"
+                value={formData.emergencyContactRelationship}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Contact Number</label>
+              <input
+                type="text"
+                name="emergencyContactNumber"
+                value={formData.emergencyContactNumber}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Contact Email</label>
+              <input
+                type="email"
+                name="emergencyContactEmail"
+                value={formData.emergencyContactEmail}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
           </div>
           
-          <div className="registration-form-group">
-            <label className="registration-label">Contact Number</label>
-            <input
-              type="text"
-              name="contactNumber"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              className="registration-input"
-              required
-            />
-          </div>
-          
-          <div className="registration-form-group">
-            <label className="registration-label">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`registration-input ${sqlError ? 'register-error-field' : ''}`}
-              required
-            />
-          </div>
-          
-          <div className="registration-form-group">
-            <label className="registration-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="registration-input"
-              required
-            />
-          </div>
-          
-          <div className="registration-form-group">
-            <label className="registration-label">Selected Room ID</label>
-            <input
-              type="text"
-              name="roomId"
-              value={formData.roomId}
-              onChange={handleChange}
-              className="registration-input"
-              required
-              readOnly
-              placeholder="Click on a room from the list"
-            />
-          </div>
-          
-          <div className="registration-form-group">
-            <label className="registration-label">Start Date</label>
-            <input
-              type="date"
-              name="startDate"
-              value={formData.startDate}
-              onChange={handleChange}
-              className="registration-input"
-              required
-            />
-          </div>
-          
-          <div className="registration-form-group">
-            <label className="registration-label">End Date</label>
-            <input
-              type="date"
-              name="endDate"
-              value={formData.endDate}
-              onChange={handleChange}
-              className="registration-input"
-              required
-            />
+          <div className="form-section">
+            <h5 className="form-section-title section-title">Room Assignment</h5>
+            <div className="registration-form-group">
+              <label className="registration-label">Selected Room ID</label>
+              <input
+                type="text"
+                name="roomId"
+                value={formData.roomId}
+                onChange={handleChange}
+                className="registration-input"
+                required
+                readOnly
+                placeholder="Click on a room from the list"
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">Start Date</label>
+              <input
+                type="date"
+                name="startDate"
+                value={formData.startDate}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
+            
+            <div className="registration-form-group">
+              <label className="registration-label">End Date</label>
+              <input
+                type="date"
+                name="endDate"
+                value={formData.endDate}
+                onChange={handleChange}
+                className="registration-input"
+                required
+              />
+            </div>
           </div>
           
           <button 

@@ -308,3 +308,211 @@
   color: var(--secondary-color);
   font-style: italic;
 }
+
+/* Registration Form Styles */
+
+.registration-container {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Rooms section */
+.registration-rooms-container {
+  flex: 1;
+  min-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;
+}
+
+.registration-rooms-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.registration-rooms-table th, 
+.registration-rooms-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.registration-rooms-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.registration-rooms-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.registration-rooms-table tbody tr:hover {
+  background-color: #efefef;
+}
+
+.registration-selected-room {
+  background-color: #e6f7ff !important;
+  border-left: 3px solid #1890ff;
+}
+
+/* Form section */
+.registration-form-container {
+  flex: 2;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.registration-section-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.form-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.form-section-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #444;
+  font-size: 16px;
+}
+
+.registration-form-group {
+  margin-bottom: 15px;
+}
+
+.registration-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+}
+
+.registration-input,
+.registration-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.registration-input:focus,
+.registration-select:focus {
+  border-color: #1890ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.registration-input[readonly] {
+  background-color: #f7f7f7;
+  cursor: not-allowed;
+}
+
+.register-error-field {
+  border-color: #ff4d4f;
+}
+
+.registration-submit-btn {
+  background-color: #1890ff;
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.registration-submit-btn:hover {
+  background-color: #096dd9;
+}
+
+.registration-submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.registration-success {
+  color: #52c41a;
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.registration-error,
+.register-error-message {
+  color: #ff4d4f;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.registration-loading {
+  color: #1890ff;
+  font-style: italic;
+}
+
+/* SQL Error container */
+.register-error-container {
+  border: 2px solid #ff0000;
+  background-color: #ffdddd;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: block;
+  color: #ff0000;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgba(255,0,0,0.3);
+}
+
+.register-error-title {
+  font-weight: bold;
+  color: #ff0000;
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.register-error-sql {
+  margin: 0;
+  color: #ff0000;
+  word-break: break-word;
+}
+
+.form-section{
+  color: black;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .registration-container {
+    flex-direction: column;
+  }}
+  
